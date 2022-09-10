@@ -1,0 +1,636 @@
+library(Integrated_bitcell_with_dummy_cells) {
+
+ /* unit attributes */
+  time_unit : "1ns";
+  voltage_unit : "1V";
+  current_unit : "1uA";
+  pulling_resistance_unit : "1kohm";
+  leakage_power_unit : "1nW";
+  capacitive_load_unit(1,pf);
+
+ input_threshold_pct_fall       :  50.0 ;
+    output_threshold_pct_fall      :  50.0 ;
+    input_threshold_pct_rise       :  50.0 ;
+    output_threshold_pct_rise      :  50.0 ;
+    slew_lower_threshold_pct_fall  :  10.0 ;
+    slew_upper_threshold_pct_fall  :  90.0 ;
+    slew_lower_threshold_pct_rise  :  10.0 ;
+    slew_upper_threshold_pct_rise  :  90.0 ;
+
+
+ type (bus_15_0) { 
+   base_type : array ; 
+   data_type : bit  
+   bit_width : 16   
+   bit_from : 15  
+   bit_to : 0 ; 
+   downto : true ; 
+ } 
+ type (bus_15_0) { 
+   base_type : array ; 
+   data_type : bit  
+   bit_width : 16   
+   bit_from : 15  
+   bit_to : 0 ; 
+   downto : true ; 
+ } 
+ type (bus_3_0) { 
+   base_type : array ; 
+   data_type : bit  
+   bit_width : 4   
+   bit_from : 3  
+   bit_to : 0 ; 
+   downto : true ; 
+ } 
+
+  cell(Integrated_bitcell_with_dummy_cells) {
+    pin(WE) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(PRE_SRAM) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(PRE_VLSA) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(PRE_CLSA) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(PRE_A) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(SAEN) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(VCLP) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(EN) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(Iref0) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(Iref1) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(Iref2) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(Iref3) { 
+	direction : input ;
+	max_transition : 2.5;
+	capacitance : 0.001; 
+    } 
+    pin(VSS) { 
+	direction : inout ;
+	capacitance : 0.001; 
+    } 
+    pin(VDD) { 
+	direction : inout ;
+	capacitance : 0.001; 
+    } 
+    bus(WWL) { 
+	bus_type : bus_15_0 ;
+	direction : input ;
+	max_transition : 2.5;
+	pin(WWL[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[3]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[4]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[5]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[6]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[7]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[8]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[9]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[10]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[11]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[12]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[13]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[14]) { 
+		capacitance : 0.001; 
+	} 
+	pin(WWL[15]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(RWL) { 
+	bus_type : bus_15_0 ;
+	direction : input ;
+	max_transition : 2.5;
+	pin(RWL[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[3]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[4]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[5]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[6]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[7]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[8]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[9]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[10]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[11]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[12]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[13]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[14]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWL[15]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(RWLB ) { 
+	bus_type : bus_15_0 ;
+	direction : input ;
+	max_transition : 2.5;
+	pin(RWLB[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[3]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[4]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[5]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[6]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[7]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[8]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[9]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[10]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[11]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[12]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[13]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[14]) { 
+		capacitance : 0.001; 
+	} 
+	pin(RWLB[15]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(Din) { 
+	bus_type : bus_15_0 ;
+	direction : input ;
+	max_transition : 2.5;
+	pin(Din[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[3]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[4]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[5]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[6]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[7]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[8]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[9]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[10]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[11]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[12]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[13]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[14]) { 
+		capacitance : 0.001; 
+	} 
+	pin(Din[15]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(SA_OUT) { 
+	bus_type : bus_15_0 ;
+	direction : output ;
+	pin(SA_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[4]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[5]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[6]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[7]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[8]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[9]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[10]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[11]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[12]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[13]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[14]) { 
+		capacitance : 0.001; 
+	} 
+	pin(SA_OUT[15]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC0_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC0_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC0_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC0_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC0_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC1_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC1_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC1_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC1_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC1_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC2_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC2_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC2_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC2_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC2_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC3_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC3_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC3_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC3_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC3_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC4_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC4_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC4_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC4_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC4_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC5_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC5_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC5_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC5_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC5_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC6_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC6_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC6_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC6_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC6_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC7_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC7_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC7_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC7_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC7_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC8_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC8_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC8_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC8_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC8_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC9_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC9_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC9_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC9_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC9_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC10_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC10_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC10_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC10_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC10_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC11_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC11_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC11_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC11_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC11_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC12_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC12_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC12_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC12_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC12_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC13_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC13_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC13_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC13_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC13_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC14_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC14_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC14_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC14_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC14_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+    bus(ADC15_OUT) { 
+	bus_type : bus_3_0 ;
+	direction : output ;
+	pin(ADC15_OUT[0]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC15_OUT[1]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC15_OUT[2]) { 
+		capacitance : 0.001; 
+	} 
+	pin(ADC15_OUT[3]) { 
+		capacitance : 0.001; 
+	} 
+    } 
+  } 
+} 
